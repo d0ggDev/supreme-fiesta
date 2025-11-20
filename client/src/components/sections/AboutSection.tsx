@@ -1,5 +1,6 @@
 import { Card } from '@/components/ui/card';
 import { Users, Target, Lightbulb } from 'lucide-react';
+import './AboutSection.css';
 
 const AboutSection = () => {
   const values = [
@@ -28,34 +29,34 @@ const AboutSection = () => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Section Header */}
-        <div className="text-center mb-10 animate-fade-in-up">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3">
+        <div className="text-center mb-12 animate-fade-in-up">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
               About BITSA
             </span>
           </h2>
-          <p className="text-gray-400 text-sm max-w-2xl mx-auto">
+          <p className="text-gray-400 text-base max-w-2xl mx-auto">
             Discover who we are and what drives our mission
           </p>
         </div>
 
         {/* Main Content */}
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="max-h-96 overflow-y-auto pr-4 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-            <h3 className="text-xl font-bold text-white mb-3">Who We Are</h3>
-            <p className="text-gray-400 mb-3 text-sm leading-relaxed">
+          <div className="max-h-96 overflow-y-auto pr-4 animate-fade-in-up delay-100">
+            <h3 className="text-2xl font-bold text-white mb-4">Who We Are</h3>
+            <p className="text-gray-400 mb-4 text-base leading-relaxed">
               BITSA is a dynamic student organization dedicated to fostering excellence in technology education. We serve as a bridge between academic learning and real-world industry experience.
             </p>
-            <p className="text-gray-400 mb-3 text-sm leading-relaxed">
+            <p className="text-gray-400 mb-4 text-base leading-relaxed">
               Our members include passionate students and tech enthusiasts who collaborate to create meaningful opportunities for growth and innovation.
             </p>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {['Networking Events', 'Technical Workshops', 'Industry Partnerships', 'Career Development'].map((item) => (
-                <li key={item} className="flex items-center gap-2 text-gray-300 text-sm">
-                  <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                <li key={item} className="flex items-center gap-3 text-gray-300 text-base">
+                  <span className="w-2.5 h-2.5 bg-cyan-400 rounded-full"></span>
                   {item}
                 </li>
               ))}
@@ -63,75 +64,43 @@ const AboutSection = () => {
           </div>
 
           {/* Right Content - Stats */}
-          <div className="grid grid-cols-2 gap-4 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <div className="grid grid-cols-2 gap-6 animate-fade-in-up delay-200">
             {[
               { number: '500+', label: 'Members' },
               { number: '50+', label: 'Events' },
               { number: '100%', label: 'Commitment' },
               { number: '2024', label: 'Founded' },
             ].map((stat) => (
-              <Card key={stat.label} className="bg-white/5 border border-cyan-500/20 p-4 text-center hover:border-cyan-500/50 transition-all duration-300 hover:scale-105">
-                <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-1">
+              <Card key={stat.label} className="bg-white/5 border border-cyan-500/20 p-6 text-center hover:border-cyan-500/50 transition-all duration-300 hover:scale-105">
+                <div className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-2">
                   {stat.number}
                 </div>
-                <p className="text-gray-400 text-xs">{stat.label}</p>
+                <p className="text-gray-400 text-sm">{stat.label}</p>
               </Card>
             ))}
           </div>
         </div>
 
         {/* Values */}
-        <div className="grid md:grid-cols-3 gap-4 mt-8">
+        <div className="grid md:grid-cols-3 gap-6 mt-12">
           {values.map((value, index) => {
             const Icon = value.icon;
             return (
-              <div key={value.title} style={{ animationDelay: `${0.3 + index * 0.1}s` }} className="animate-fade-in-up">
+              <div key={value.title} className={`animate-fade-in-up delay-${300 + index * 100}`}>
                 <Card
-                  className="bg-white/5 border border-cyan-500/20 p-5 hover:border-cyan-500/50 hover:bg-white/10 transition-all duration-300 group hover:scale-105"
+                  className="bg-white/5 border border-cyan-500/20 p-6 hover:border-cyan-500/50 hover:bg-white/10 transition-all duration-300 group hover:scale-105"
                 >
-                  <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                    <Icon className="w-5 h-5 text-white" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <Icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-base font-bold text-white mb-2">{value.title}</h3>
-                  <p className="text-gray-400 text-sm">{value.description}</p>
+                  <h3 className="text-lg font-bold text-white mb-2">{value.title}</h3>
+                  <p className="text-gray-400 text-base">{value.description}</p>
                 </Card>
               </div>
             );
           })}
         </div>
       </div>
-
-      <style>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes sectionEnter {
-          from {
-            opacity: 0;
-            transform: scale(0.98);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        .animate-fade-in-up {
-          animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .animate-section-enter {
-          animation: sectionEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-      `}</style>
     </section>
   );
 };

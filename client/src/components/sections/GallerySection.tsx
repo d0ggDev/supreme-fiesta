@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, ArrowLeft, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
+import './GallerySection.css';
 
 const GallerySection = () => {
   const { data: galleryItems = [], isLoading } = trpc.gallery.list.useQuery();
@@ -84,15 +85,15 @@ const GallerySection = () => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col h-full">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col h-full">
         {/* Section Header */}
         <div className="text-center mb-8 animate-fade-in-up">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
               Photo Gallery
             </span>
           </h2>
-          <p className="text-gray-400 text-sm max-w-2xl mx-auto">
+          <p className="text-gray-400 text-base max-w-2xl mx-auto">
             Memorable moments from our events
           </p>
         </div>
@@ -110,10 +111,10 @@ const GallerySection = () => {
             </button>
 
             {/* Main Carousel */}
-            <div className="flex-1 flex items-center justify-center gap-4 px-20">
+            <div className="flex-1 flex items-center justify-center gap-4 px-12 sm:px-20">
               {/* Current Image */}
               <div
-                className={`relative w-96 h-96 transition-all duration-500 ${
+                className={`relative w-full max-w-md aspect-square transition-all duration-500 ${
                   isTransitioning ? 'opacity-0' : 'opacity-100'
                 }`}
               >
@@ -125,10 +126,7 @@ const GallerySection = () => {
                   <img
                     src={currentItem.imageUrl}
                     alt={currentItem.title}
-                    className="w-full h-full object-cover rounded-3xl shadow-2xl"
-                    style={{
-                      boxShadow: '0 0 60px rgba(0, 206, 212, 0.3), 0 20px 40px rgba(0, 0, 0, 0.5)',
-                    }}
+                    className="w-full h-full object-cover rounded-3xl shadow-2xl gallery-shadow"
                   />
 
                   {/* Shine Effect */}
@@ -138,7 +136,7 @@ const GallerySection = () => {
 
               {/* Next Image Peek */}
               <div
-                className={`relative w-20 h-96 transition-all duration-500 ${
+                className={`relative w-1/6 max-w-xs aspect-square transition-all duration-500 hidden sm:block ${
                   isTransitioning ? 'opacity-0 blur-md' : 'opacity-50 blur-sm'
                 }`}
               >
@@ -161,12 +159,12 @@ const GallerySection = () => {
           </div>
 
           {/* Image Details */}
-          <div className="text-center space-y-3 animate-fade-in-up">
-            <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/20 text-cyan-400">
+          <div className="text-center space-y-4 animate-fade-in-up">
+            <div className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-cyan-500/20 text-cyan-400">
               {currentItem.category}
             </div>
             <h3 className="text-2xl font-bold text-white">{currentItem.title}</h3>
-            <p className="text-gray-400 text-sm max-w-2xl mx-auto">{currentItem.description}</p>
+            <p className="text-gray-400 text-base max-w-2xl mx-auto">{currentItem.description}</p>
 
             {/* Pagination Dots */}
             <div className="flex justify-center gap-2 mt-6">
@@ -185,38 +183,6 @@ const GallerySection = () => {
           </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes sectionEnter {
-          from {
-            opacity: 0;
-            transform: scale(0.98);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        .animate-fade-in-up {
-          animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .animate-section-enter {
-          animation: sectionEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-      `}</style>
     </section>
   );
 };

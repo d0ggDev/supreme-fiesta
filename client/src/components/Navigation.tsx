@@ -75,13 +75,13 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden pb-4 space-y-2 animate-in fade-in slide-in-from-top-2">
+        <div className={`transition-all duration-300 ease-in-out md:hidden ${isOpen ? 'max-h-96' : 'max-h-0'} overflow-hidden`}>
+          <div className="pb-4 space-y-2">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`block w-full text-left px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
                   activeSection === item.id
                     ? 'bg-cyan-500/20 text-cyan-400'
                     : 'text-gray-300 hover:text-cyan-400 hover:bg-white/5'
@@ -91,7 +91,7 @@ const Navigation = () => {
               </button>
             ))}
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );
